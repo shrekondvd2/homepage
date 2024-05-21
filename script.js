@@ -10,7 +10,9 @@ new Vue({
     ],
     currentPane: 0,
     isScrolling: false,
-    scrollTimeout: null
+    scrollTimeout: null,
+    touchStartY: 0,
+    touchEndY: 0
   },
   methods: {
     redirectToLink() {
@@ -45,6 +47,27 @@ new Vue({
         this.isScrolling = false;
         this.scrollTimeout = null;
       }, 1000); // 1 second delay to debounce the scroll event
+    },
+    handleTouchStart(event) {
+      this.touchStartY = event.touches[0].clientY;
+    },
+    handleTouchMove(event) {
+      this.touchEndY = event.touches[0].clientY;
+    },
+    handleTouchEnd() {
+      if (this.touchStartY - this.touchEndY > 50) {
+        // Swipe up
+        if (this.currentPane < this.panes.length - 1) {
+          this.currentPane++;
+          this.scrollToPane(this.currentPane);
+        }
+      } else if (this.touchEndY - this.touchStartY > 50) {
+        // Swipe down
+        if (this.currentPane > 0) {
+          this.currentPane--;
+          this.scrollToPane(this.currentPane);
+        }
+      }
     }
   },
   mounted() {
@@ -65,6 +88,10 @@ new Vue({
       }
     });
 
+    window.addEventListener('touchstart', this.handleTouchStart);
+    window.addEventListener('touchmove', this.handleTouchMove);
+    window.addEventListener('touchend', this.handleTouchEnd);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -81,5 +108,8 @@ new Vue({
   },
   beforeDestroy() {
     window.removeEventListener('wheel', this.handleScroll);
+    window.removeEventListener('touchstart', this.handleTouchStart);
+    window.removeEventListener('touchmove', this.handleTouchMove);
+    window.removeEventListener('touchend', this.handleTouchEnd);
   }
 });
