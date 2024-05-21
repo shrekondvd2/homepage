@@ -11,38 +11,14 @@
   <div id="app">
     <div class="nav">
       <img src="https://i.ibb.co/gDCRHrd/output-onlinepngtools.png" alt="Logo" class="logo">
-      <button class="try-button" id="tryButton">Try it free</button>
+      <button class="try-button" @click="redirectToLink">Try it free</button>
     </div>
-    <div class="pane" id="pane0" style="background-color: #F6F1E5;">
-      <div class="content">
-        <h1>Personalized health plan for</h1>
-      </div>
-    </div>
-    <div class="pane" id="pane1" style="background-color: #FFFFFF;">
-      <div class="content">
-        <h1>Discover your health score. Improve your daily routine.</h1>
-      </div>
-    </div>
-    <div class="pane" id="pane2" style="background-color: #F6F1E5;">
-      <div class="content">
-        <h1>We take care of the planning. You focus on execution.</h1>
-      </div>
-    </div>
-    <div class="pane" id="pane3" style="background-color: #FFFFFF;">
-      <div class="content">
-        <h1>Who is this for?</h1>
-        <p><strong>Busy Parents:</strong> Streamlined routines.</p>
-        <p><strong>Productivity Hacker:</strong> Personalized insights.</p>
-        <p><strong>Longevity Seekers:</strong> Holistic guide.</p>
-      </div>
-    </div>
-    <div class="pane" id="pane4" style="background-color: #F6F1E5;">
-      <div class="content">
-        <h1><strong>Be bold.</strong> <br>Be brave.<br> Be the person who pushes boundaries.</h1>
-      </div>
+    <div class="pane" v-for="(pane, index) in panes" :key="index" :id="'pane' + index" :style="{ backgroundColor: pane.color }">
+      <div class="content" v-html="pane.content"></div>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="script.js"></script>
 </body>
 </html>
