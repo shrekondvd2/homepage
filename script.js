@@ -2,7 +2,8 @@ new Vue({
   el: '#app',
   data: {
     panes: [
-      { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
+      // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
+      { color: '#F6F1E5', content: '<h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
       { color: '#FFFFFF', content: '<h1>Discover your health score. Improve your daily routine.</h1>' },
       { color: '#F6F1E5', content: '<h1>We take care of the planning. You focus on execution.</h1>' },
       { color: '#FFFFFF', content: '<h1>Who is this for?</h1><p><strong>Busy Parents:</strong> Streamlined routines.</p><p><strong>Productivity Hacker:</strong> Personalized insights.</p><p><strong>Longevity Seekers:</strong> Holistic guide.</p>' },
@@ -113,3 +114,73 @@ new Vue({
     window.removeEventListener('touchend', this.handleTouchEnd);
   }
 });
+
+// Dynamic text effect with typing and deleting
+    const texts = ["busy professionals", "overloaded parents", "health-forward individuals", "longevity aspirers"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    let isDeleting = false;
+    let deleteSpeedAdjustment = 0;
+
+    function type() {
+      if (count === texts.length) {
+        count = 0;
+      }
+      currentText = texts[count];
+
+      if (isDeleting) {
+        // Delete letters
+        letter = currentText.slice(0, --index);
+      } else {
+        // Type letters
+        letter = currentText.slice(0, ++index);
+      }
+
+      const dynamicTextElement = document.getElementById('dynamic-text');
+      dynamicTextElement.innerHTML = `<span class="${getTextHighlightClass(texts[count])}">${letter}</span>`;
+
+      if (!isDeleting && index === currentText.length) {
+        // Start deleting after a delay when the word is complete
+        setTimeout(() => { isDeleting = true; deleteSpeedAdjustment = 0; }, 1000);
+      } else if (isDeleting && index === 0) {
+        // Move to the next word after deletion is complete
+        isDeleting = false;
+        count++;
+        index = 0;
+      }
+
+      let typingSpeed = 150;
+      let deletingSpeed = 110 - Math.min(60, deleteSpeedAdjustment);
+      if (isDeleting) { deleteSpeedAdjustment += 10; } // Gradually increase deletion speed
+      setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    }
+
+    function getTextHighlightClass(text) {
+      switch (text) {
+        case 'busy professionals': return 'highlight-yellow';
+        case 'health-forward individuals': return 'highlight-green';
+        case 'longevity aspirers': return 'highlight-red';
+        case 'overloaded parents': return 'highlight-blue';
+        default: return '';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      type();
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        threshold: 0.1 // Adjust if necessary to control when the transition starts
+      });
+
+      const elements = document.querySelectorAll('.block-transition');
+      elements.forEach(el => observer.observe(el));
+    });
