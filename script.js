@@ -3,7 +3,7 @@ new Vue({
   data: {
     panes: [
       // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
-      { color: '#F6F1E5', content: '<h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
+      { color: '#F6F1E5', content: '<h1 id="header-text" class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
       { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">Discover your health score. <br>Improve your daily routine.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/Health%20Score%20-%20iPhone%2014%20%26%2015%20Pro.png" class="health-score-image" alt="Health Score">' },
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">We take care of the planning. <br>You focus on execution.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/we_take_care_of_planning.png" class="planning_img" alt="Planning">' },
       { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
