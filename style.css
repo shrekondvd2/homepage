@@ -40,7 +40,7 @@ body, html {
   padding: 10px 20px;
   margin-right: 40px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 550;
   font-family: 'Poppins', sans-serif;
   border-radius: 5px;
@@ -73,14 +73,14 @@ body, html {
 .pane h1 {
   font-size: 2.3em;
   font-weight: 700;
-  color: #333;
+  color: black;
   margin-bottom: 20px;
 }
 
 .pane p {
   font-size: 1.2em;
   font-weight: 300;
-  color: #555;
+  color: black;
   line-height: 1.5;
 }
 
@@ -157,7 +157,7 @@ body, html {
 }
   
   .planning_img {
-  max-width: 80%;
+  max-width: 90%;
 }
   
 }
