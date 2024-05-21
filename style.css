@@ -121,7 +121,7 @@ body, html {
     text-align: left;
 }
 
-.centered-image {
+.health-score-image {
   max-width: 40%;
   height: auto;
   display: block;
@@ -130,6 +130,9 @@ body, html {
 
 .planning_img {
   max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
 }
 
 
