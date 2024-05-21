@@ -125,6 +125,10 @@ body, html {
   margin: 20px auto;
 }
 
+#planning_img {
+  max-width: 50%;
+}
+
 
 /* Media query for mobile devices */
 @media (max-width: 600px) {
