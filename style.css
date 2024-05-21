@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: Open Sans, sans-serif;
   overflow: auto;
 }
 
@@ -69,7 +69,7 @@ body, html {
 }
 
 .pane h1 {
-  font-size: 2.5em;
+  font-size: 2.3em;
   font-weight: 700;
   color: #333;
   margin-bottom: 20px;
@@ -102,4 +102,12 @@ body, html {
 
 #dynamic-text .highlight-red {
     background-color: rgba(234, 67, 53, 0.1);
+}
+
+#be-bold-text {
+    text-align: left;
+}
+
+#lefties {
+    text-align: left;
 }
