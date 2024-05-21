@@ -87,7 +87,8 @@ body, html {
 #header-text {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 40px;
+  color: black;
   
 }
 
