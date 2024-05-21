@@ -1,10 +1,12 @@
 import gsap from "https://cdn.skypack.dev/gsap@3.12.0";
 import { ScrollTrigger } from "https://cdn.skypack.dev/gsap@3.12.0/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
+const isMobile = window.innerWidth <= 768;
+
 if (!CSS.supports("animation-timeline: view()")) {
-  gsap.registerPlugin(ScrollTrigger);
   // Set up all the scroll animations with ScrollTrigger instead.
-  // Blanket styles
   gsap.set(".fixed", {
     position: "fixed",
     inset: 0
@@ -14,12 +16,10 @@ if (!CSS.supports("animation-timeline: view()")) {
     inset: 0,
     zIndex: 6
   });
-  // First section
-  gsap.set("section:first-of-type .fixed", {
-    transformOrigin: "50% 0%"
-  });
+
+  // Example for the first section
   gsap.to("section:first-of-type .fixed", {
-    scale: "0.35 0.5",
+    scale: isMobile ? "0.5 0.7" : "0.35 0.5", // Adjust scaling for mobile
     yPercent: -10,
     scrollTrigger: {
       scrub: 0.5,
@@ -28,6 +28,7 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "bottom 50%"
     }
   });
+
   gsap.to("section:first-of-type .fixed", {
     opacity: 0,
     scrollTrigger: {
@@ -37,6 +38,7 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "bottom 75%"
     }
   });
+
   // The second section with image scaling down, etc.
   gsap.set("section:nth-of-type(2) article:first-of-type .fixed", {
     clipPath: "ellipse(220% 200% at 50% 300%)",
@@ -88,7 +90,6 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "top 0%"
     }
   });
-  // Blur the text on exit
   gsap.to("section:nth-of-type(2) article:first-of-type .text-wrap", {
     filter: "blur(4rem)",
     opacity: 0,
@@ -133,7 +134,8 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "bottom 50%"
     }
   });
-  // Fourth
+
+  // Fourth section
   gsap.set(".filler", {
     display: "block",
     position: "absolute",
@@ -167,6 +169,7 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "bottom 85%"
     }
   });
+
   // Animate the text blocks
   const LINES = document.querySelectorAll(".text-blocks p");
   LINES.forEach((LINE, index) => {
@@ -200,7 +203,8 @@ if (!CSS.supports("animation-timeline: view()")) {
       end: "bottom 30%"
     }
   });
-  // The last piece is unclipping the end piece
+
+  // Unclipping the end piece
   gsap.set("section:nth-of-type(2) article:last-of-type .fixed", {
     clipPath: "ellipse(220% 200% at 50% 300%)",
     zIndex: 5
@@ -215,102 +219,89 @@ if (!CSS.supports("animation-timeline: view()")) {
     }
   });
 
-  // Scroll indicator trickery
-  const INDICATORS = document.querySelectorAll(".indicator");
-  const ARTICLES = document.querySelectorAll("article");
-  INDICATORS.forEach((indicator, index) => {
-    // Here need to animate the indicator based on the position of the card
-    gsap.to(indicator, {
-      flex: 3,
-      repeat: 1,
-      yoyo: true,
-      scrollTrigger: {
-        scrub: true,
-        trigger: ARTICLES[index],
-        scroller: "body",
-        start: "top bottom",
-        end: "bottom top"
-      }
+  // Scroll indicator animation (optional for mobile, as indicators are hidden)
+  if (!isMobile) {
+    const INDICATORS = document.querySelectorAll(".indicator");
+    const ARTICLES = document.querySelectorAll("article");
+    INDICATORS.forEach((indicator, index) => {
+      gsap.to(indicator, {
+        flex: 3,
+        repeat: 1,
+        yoyo: true,
+        scrollTrigger: {
+          scrub: true,
+          trigger: ARTICLES[index],
+          scroller: "body",
+          start: "top bottom",
+          end: "bottom top"
+        }
+      });
     });
-  });
+  }
 }
 
+// Dynamic text effect
+const texts = ["busy professionals", "overloaded parents", "health-forward individuals", "longevity aspirers"];
+let count = 0;
+let index = 0;
+let currentText = '';
+let letter = '';
+let isDeleting = false;
+let deleteSpeedAdjustment = 0;
 
+function type() {
+    if (count === texts.length) {
+        count = 0;
+    }
+    currentText = texts[count];
 
-
-
-
-
-
-// Dynamic text effect with typing and deleting
-    const texts = ["busy professionals", "overloaded parents", "health-forward individuals", "longevity aspirers",];
-    let count = 0;
-    let index = 0;
-    let currentText = '';
-    let letter = '';
-    let isDeleting = false;
-    let deleteSpeedAdjustment = 0;
-
-    function type() {
-        if (count === texts.length) {
-            count = 0;
-        }
-        currentText = texts[count];
-
-        if (isDeleting) {
-            // Delete letters
-            letter = currentText.slice(0, --index);
-        } else {
-            // Type letters
-            letter = currentText.slice(0, ++index);
-        }
-
-        const dynamicTextElement = document.getElementById('dynamic-text');
-        dynamicTextElement.innerHTML = `<span class="${getTextHighlightClass(texts[count])}">${letter}</span>`;
-
-        if (!isDeleting && index === currentText.length) {
-            // Start deleting after a delay when the word is complete
-            setTimeout(() => { isDeleting = true; deleteSpeedAdjustment = 0; }, 1000);
-        } else if (isDeleting && index === 0) {
-            // Move to the next word after deletion is complete
-            isDeleting = false;
-            count++;
-            index = 0;
-        }
-
-        let typingSpeed = 150;
-        let deletingSpeed = 110 - Math.min(60, deleteSpeedAdjustment);
-        if (isDeleting) { deleteSpeedAdjustment += 10; } // Gradually increase deletion speed
-        setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    if (isDeleting) {
+        letter = currentText.slice(0, --index);
+    } else {
+        letter = currentText.slice(0, ++index);
     }
 
-    function getTextHighlightClass(text) {
-        switch (text) {
-            case 'busy professionals': return 'highlight-yellow';
-            case 'health-forward individuals': return 'highlight-green';
-            case 'longevity aspirers': return 'highlight-red';
-            case 'overloaded parents': return 'highlight-blue';
-            default: return '';
-        }
+    const dynamicTextElement = document.getElementById('dynamic-text');
+    dynamicTextElement.innerHTML = `<span class="${getTextHighlightClass(texts[count])}">${letter}</span>`;
+
+    if (!isDeleting && index === currentText.length) {
+        setTimeout(() => { isDeleting = true; deleteSpeedAdjustment = 0; }, 1000);
+    } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        count++;
+        index = 0;
     }
 
-    // type(); // Initial call to start the typing effect
-// });
-    
-    document.addEventListener('DOMContentLoaded', function () {
-      type();
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
-            }
-        });
-    }, {
-        threshold: 0.1 // Adjust if necessary to control when the transition starts
-    });
+    let typingSpeed = 150;
+    let deletingSpeed = 110 - Math.min(60, deleteSpeedAdjustment);
+    if (isDeleting) { deleteSpeedAdjustment += 10; }
+    setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+}
 
-    const elements = document.querySelectorAll('.block-transition');
-    elements.forEach(el => observer.observe(el));
+function getTextHighlightClass(text) {
+    switch (text) {
+        case 'busy professionals': return 'highlight-yellow';
+        case 'health-forward individuals': return 'highlight-green';
+        case 'longevity aspirers': return 'highlight-red';
+        case 'overloaded parents': return 'highlight-blue';
+        default: return '';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  type();
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+          } else {
+              entry.target.classList.remove('visible');
+          }
+      });
+  }, {
+      threshold: 0.1
+  });
+
+  const elements = document.querySelectorAll('.block-transition');
+  elements.forEach(el => observer.observe(el));
 });
