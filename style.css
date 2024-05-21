@@ -119,4 +119,12 @@ body, html {
   .content {
     padding: 0 5px;
   }
+
+  .nav {
+    padding: 5px 10px;
+  }
+
+  .logo {
+    height: 24px;
+  }
 }
