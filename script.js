@@ -4,8 +4,8 @@ new Vue({
     panes: [
       // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
       { color: '#F6F1E5', content: '<h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
-      { color: '#FFFFFF', content: '<h1 id="lefties">Discover your health score. <br>Improve your daily routine.</h1>' },
-      { color: '#F6F1E5', content: '<h1 id="lefties">We take care of the planning. <br>You focus on execution.</h1>' },
+      { color: '#FFFFFF', content: '<h1 id="lefties">Discover your health score. <br><br>Improve your daily routine.</h1>' },
+      { color: '#F6F1E5', content: '<h1 id="lefties">We take care of the planning. <br><br>You focus on execution.</h1>' },
       { color: '#FFFFFF', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
       { color: '#F6F1E5', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br> Be proactive.</h1>' }
     ],
