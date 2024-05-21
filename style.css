@@ -118,6 +118,6 @@ body, html {
 /* Media query for mobile devices */
 @media (max-width: 600px) {
   .pane h1 {
-    font-size: 1.9em;
+    font-size: 1.6em;
   }
 }
