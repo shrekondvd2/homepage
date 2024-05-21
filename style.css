@@ -106,12 +106,15 @@ body, html {
     background-color: rgba(234, 67, 53, 0.1);
 }
 
+#health-score-pane {
+}
+
 #be-bold-text {
     text-align: left;
     font-size: 3em;
 }
 
-#lefties {
+.lefties {
     text-align: left;
 }
 
@@ -128,4 +131,9 @@ body, html {
   .pane h1 {
     font-size: 1.9em;
   }
+  
+  #health-score-pane {
+    font-size: 1.7em;
+}
+  
 }
