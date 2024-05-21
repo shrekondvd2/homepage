@@ -140,4 +140,8 @@ body, html {
     font-size: 1.5em;
 }
   
+  #planning_img {
+  max-width: 60%;
+}
+  
 }
