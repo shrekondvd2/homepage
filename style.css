@@ -23,7 +23,8 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+/*   background-color: rgba(255, 255, 255, 0.8); */
+  background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(10px);
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -31,6 +32,7 @@ body, html {
 
 .logo {
   height: 28px;
+  margin-top: 5px;
 }
 
 .try-button {
