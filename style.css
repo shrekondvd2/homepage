@@ -125,6 +125,9 @@ body, html {
   margin: 20px auto;
 }
 
+#planning_pane {
+}
+
 #planning_img {
   max-width: 50%;
 }
@@ -137,6 +140,10 @@ body, html {
   }
   
   #health-score-pane {
+    font-size: 1.5em;
+}
+  
+  #planning_pane {
     font-size: 1.5em;
 }
   
