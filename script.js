@@ -7,7 +7,7 @@ new Vue({
       { color: '#FFFFFF', content: '<h1 id="lefties">Discover your health score. <br>Improve your daily routine.</h1>' },
       { color: '#F6F1E5', content: '<h1 id="lefties">We take care of the planning. <br>You focus on execution.</h1>' },
       { color: '#FFFFFF', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
-      { color: '#F6F1E5', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be brave.<br> Be the person who pushes boundaries.</h1>' }
+      { color: '#F6F1E5', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br> Be proactive.</h1>' }
     ],
     currentPane: 0,
     isScrolling: false,
