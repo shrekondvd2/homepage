@@ -10,7 +10,7 @@ new Vue({
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">No need for calendars. <br>We use AI powered reminders.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/nexa%20push%20notification.png" class="planning_img" alt="Planning">' },
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">Reclaim your time. <br>Nexa saves you 45 hrs /mo.</h1><img src="https://i2.wp.com/cdn.dribbble.com/users/862175/screenshots/6414127/dribbble.gif" class="planning_img" alt="Planning">' },
       { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
-      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This not a fitness app. <br>Nexa is a longevity companion. <br>We slowly help you systematize your health tracking 5 biomarkers.' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This is not a "workouts" app. <br>Nexa is a longevity companion. <br>We systematize your daily routine optimizing 5 biomarkers.' },
       { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be proactive.</h1>' }
     ],
     currentPane: 0,
