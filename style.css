@@ -115,6 +115,7 @@ body, html {
 }
 
 #health-score-pane {
+/*   text-align: left; */
 }
 
 #planning_pane {
@@ -126,7 +127,7 @@ body, html {
 }
 
 .lefties {
-    text-align: left;
+  text-align: left !important;
 }
 
 .health-score-image {
