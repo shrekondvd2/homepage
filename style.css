@@ -1,178 +1,189 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: Poppins, sans-serif;
-  overflow: auto;
-}
+new Vue({
+  el: '#app',
+  data: {
+    panes: [
+      // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
+      { color: '#F6F1E5', content: '<h1 id="header-text" class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
+      // { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">Discover your health score. <br>Improve your daily routine.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/Health%20Score%20-%20iPhone%2014%20%26%2015%20Pro.png" class="health-score-image" alt="Health Score">' },
+      { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">No guessing required. <br>We calculate your health score.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/health%20score%20side%20by%20side.png" class="health-score-image" alt="Health Score" onclick="window.location.href=\'https://testflight.apple.com/join/i7Ie7qGd\'">' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">No more planning. <br>We systemize workouts and meals.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/we_take_care_of_planning.png" class="planning_img" alt="Planning">' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">No need for calendars. <br>Rely on AI powered reminders.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/nexa%20push%20notification.png" class="planning_img" alt="Planning">' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">Get back +56hrs/month. <br>Systemize: Eat, Move, Sleep.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/relaxing_updated.png" class="planning_img" alt="Planning">' },
+      { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
+      { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be proactive.</h1>' }
+    ],
+    currentPane: 0,
+    isScrolling: false,
+    scrollTimeout: null,
+    touchStartY: 0,
+    touchEndY: 0
+  },
+  methods: {
+    redirectToLink() {
+      window.location.href = 'https://testflight.apple.com/join/i7Ie7qGd';
+    },
+    scrollToPane(index) {
+      this.isScrolling = true;
+      const pane = document.getElementById('pane' + index);
+      pane.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        this.isScrolling = false;
+      }, 700); // Delay to prevent continuous scrolling
+    },
+    handleScroll(event) {
+      if (this.isScrolling || this.scrollTimeout) return;
 
-#app {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
+      this.isScrolling = true;
 
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-/*   background-color: rgba(255, 255, 255, 0.8); */
-  background-color: rgba(255, 255, 255, 1);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+      if (event.deltaY > 0) {
+        if (this.currentPane < this.panes.length - 1) {
+          this.currentPane++;
+        }
+      } else {
+        if (this.currentPane > 0) {
+          this.currentPane--;
+        }
+      }
 
-.logo {
-  height: 26px;
-  margin-top: 5px;
-}
+      this.scrollToPane(this.currentPane);
 
-.try-button {
-  background-color: black;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-right: 40px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 550;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+      this.scrollTimeout = setTimeout(() => {
+        this.isScrolling = false;
+        this.scrollTimeout = null;
+      }, 1000); // 1 second delay to debounce the scroll event
+    },
+    handleTouchStart(event) {
+      this.touchStartY = event.touches[0].clientY;
+    },
+    handleTouchMove(event) {
+      this.touchEndY = event.touches[0].clientY;
+    },
+    handleTouchEnd() {
+      if (this.touchStartY - this.touchEndY > 50) {
+        // Swipe up
+        if (this.currentPane < this.panes.length - 1) {
+          this.currentPane++;
+          this.scrollToPane(this.currentPane);
+        }
+      } else if (this.touchEndY - this.touchStartY > 50) {
+        // Swipe down
+        if (this.currentPane > 0) {
+          this.currentPane--;
+          this.scrollToPane(this.currentPane);
+        }
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('wheel', this.handleScroll);
+    window.addEventListener('keydown', (event) => {
+      if (this.isScrolling) return;
 
-.try-button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
+      if (event.key === 'ArrowDown') {
+        if (this.currentPane < this.panes.length - 1) {
+          this.currentPane++;
+          this.scrollToPane(this.currentPane);
+        }
+      } else if (event.key === 'ArrowUp') {
+        if (this.currentPane > 0) {
+          this.currentPane--;
+          this.scrollToPane(this.currentPane);
+        }
+      }
+    });
 
-.pane {
-  flex: 0 0 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  scroll-snap-align: start;
-  transition: transform 0.3s ease-in-out;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    window.addEventListener('touchstart', this.handleTouchStart);
+    window.addEventListener('touchmove', this.handleTouchMove);
+    window.addEventListener('touchend', this.handleTouchEnd);
 
-.content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.currentPane = parseInt(entry.target.id.replace('pane', ''));
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
 
-.pane h1 {
-  font-size: 2.3em;
-  font-weight: 700;
-  color: black;
-  margin-bottom: 20px;
-}
-
-.pane p {
-  font-size: 1.2em;
-  font-weight: 300;
-  color: black;
-  line-height: 1.5;
-}
-
-#header-text {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  color: black;
-  
-}
-
-#dynamic-text {
-    display: inline-block;
-    min-width: 150px;
-/*     border-right: 2px solid black; */
-    padding-right: 5px;
-    animation: blink 0.7s infinite;
-}
-
-#dynamic-text .highlight-yellow {
-    background-color: rgba(244, 180, 0, 0.2);
-}
-
-#dynamic-text .highlight-blue {
-    background-color: rgba(66, 133, 244, 0.2);
-}
-
-#dynamic-text .highlight-red {
-    background-color: rgba(234, 67, 53, 0.2);
-}
-
-#dynamic-text .highlight-green {
-    background-color: rgb(84, 199, 80, 0.2);
-}
-
-#health-score-pane {
-/*   text-align: left; */
-}
-
-#planning_pane {
-}
-
-#be-bold-text {
-    text-align: left;
-    font-size: 3em;
-}
-
-.lefties {
-  text-align: left !important;
-}
-
-.health-score-image {
-  max-width: 50%;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-}
-
-.planning_img {
-  max-width: 50%;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-}
-
-
-/* Media query for mobile devices */
-@media (max-width: 600px) {
-  .pane h1 {
-    font-size: 1.9em;
+    document.querySelectorAll('.pane').forEach(pane => {
+      observer.observe(pane);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener('wheel', this.handleScroll);
+    window.removeEventListener('touchstart', this.handleTouchStart);
+    window.removeEventListener('touchmove', this.handleTouchMove);
+    window.removeEventListener('touchend', this.handleTouchEnd);
   }
-  
-  #header-text {
-  font-size: 30px;
-}
-  
-  #health-score-pane {
-    font-size: 1.3em;
-}
-  
-  #planning_pane {
-    font-size: 1.3em;
-}
-  
-  .health-score-image {
-  max-width: 90%;
-}
-  
-  .planning_img {
-  max-width: 90%;
-}
-  
-}
+});
+
+// Dynamic text effect with typing and deleting
+    const texts = ["busy professionals", "overloaded parents", "health-forward individuals", "longevity aspirers"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    let isDeleting = false;
+    let deleteSpeedAdjustment = 0;
+
+    function type() {
+      if (count === texts.length) {
+        count = 0;
+      }
+      currentText = texts[count];
+
+      if (isDeleting) {
+        // Delete letters
+        letter = currentText.slice(0, --index);
+      } else {
+        // Type letters
+        letter = currentText.slice(0, ++index);
+      }
+
+      const dynamicTextElement = document.getElementById('dynamic-text');
+      dynamicTextElement.innerHTML = `<span class="${getTextHighlightClass(texts[count])}">${letter}</span>`;
+
+      if (!isDeleting && index === currentText.length) {
+        // Start deleting after a delay when the word is complete
+        setTimeout(() => { isDeleting = true; deleteSpeedAdjustment = 0; }, 1000);
+      } else if (isDeleting && index === 0) {
+        // Move to the next word after deletion is complete
+        isDeleting = false;
+        count++;
+        index = 0;
+      }
+
+      let typingSpeed = 110;
+      let deletingSpeed = 110 - Math.min(60, deleteSpeedAdjustment);
+      if (isDeleting) { deleteSpeedAdjustment += 10; } // Gradually increase deletion speed
+      setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    }
+
+    function getTextHighlightClass(text) {
+      switch (text) {
+        case 'busy professionals': return 'highlight-yellow';
+        case 'health-forward individuals': return 'highlight-green';
+        case 'longevity aspirers': return 'highlight-red';
+        case 'overloaded parents': return 'highlight-blue';
+        default: return '';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      type();
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        threshold: 0.1 // Adjust if necessary to control when the transition starts
+      });
+
+      const elements = document.querySelectorAll('.block-transition');
+      elements.forEach(el => observer.observe(el));
+    });
