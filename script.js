@@ -152,7 +152,7 @@ new Vue({
         index = 0;
       }
 
-      let typingSpeed = 150;
+      let typingSpeed = 110;
       let deletingSpeed = 110 - Math.min(60, deleteSpeedAdjustment);
       if (isDeleting) { deleteSpeedAdjustment += 10; } // Gradually increase deletion speed
       setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
