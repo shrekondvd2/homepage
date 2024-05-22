@@ -10,7 +10,7 @@ new Vue({
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">No need for calendars. <br>Rely on AI powered reminders.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/nexa%20push%20notification.png" class="planning_img" alt="Planning">' },
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">Get +56hrs per month back. <br>Systemize: Eat, Move, Sleep.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/relaxing_updated.png" class="planning_img" alt="Planning">' },
       { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hacker</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
-      { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be precise.</h1>' }
+      { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be proactive.</h1>' }
     ],
     currentPane: 0,
     isScrolling: false,
