@@ -3,7 +3,7 @@ new Vue({
   data: {
     panes: [
       // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
-      { color: '#F6F1E5', content: '<h1 id="header-text" class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
+      { color: '#F6F1E5', content: '<img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/images/nexa%20logo%20icon%20no%20background.png" alt="Nexa Logo" class="pane-logo"> <h1 id="header-text" class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Personalized health plan for<br><span id="dynamic-text"></span></h1>'},
       // { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">Discover your health score. <br>Improve your daily routine.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/Health%20Score%20-%20iPhone%2014%20%26%2015%20Pro.png" class="health-score-image" alt="Health Score">' },
       { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">No more guessing. <br>We calculate your health score.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/health%20score%20side%20by%20side.png" class="health-score-image" alt="Health Score" onclick="window.location.href=\'https://testflight.apple.com/join/i7Ie7qGd\'">' },
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">No more planning. <br>We systemize fitness and meals.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/we_take_care_of_planning.png" class="planning_img" alt="Planning">' },
