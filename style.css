@@ -126,6 +126,10 @@ body, html {
     background-color: rgb(84, 199, 80, 0.2);
 }
 
+#highlight-green {
+    background-color: rgb(84, 199, 80, 0.2);
+}
+
 #health-score-pane {
 /*   text-align: left; */
 }
