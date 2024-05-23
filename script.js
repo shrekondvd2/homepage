@@ -5,7 +5,7 @@ new Vue({
       // { color: '#F6F1E5', content: '<h1>Personalized health plan for</h1>' },
       // { color: '#F6F1E5', content: '<img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/images/nexa%20logo%20icon%20no%20background.png" alt="Nexa Logo" class="pane-logo"> <h1 id="header-text" class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">Optimize how you<br>move, eat and sleep.<br><br>A guide for<br><span id="dynamic-text"></span></h1>'},
       
-       { color: '#F6F1E5', content: '<img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/images/nexa%20logo%20icon%20no%20background.png" alt="Nexa Logo" class="pane-logo"> <h1 id="header-text">Automate your routine.<br>We optimize how you<br>move, eat and sleep'},
+       { color: '#F6F1E5', content: '<img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/images/nexa%20logo%20icon%20no%20background.png" alt="Nexa Logo" class="pane-logo"> <h1 id="header-text">Automate your routine.<br>We optimize how you<br><span id="highlight-green">move, eat and sleep</span></h1>'},
       
       // { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">Discover your health score. <br>Improve your daily routine.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/Health%20Score%20-%20iPhone%2014%20%26%2015%20Pro.png" class="health-score-image" alt="Health Score">' },
       { color: '#FFFFFF', content: '<h1 id="health-score-pane" class="lefties">No more uncertainty. <br>We calculate your health score.</h1><img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/health%20score%20side%20by%20side.png" class="health-score-image" alt="Health Score" onclick="window.location.href=\'https://testflight.apple.com/join/i7Ie7qGd\'">' },
@@ -15,7 +15,7 @@ new Vue({
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">Reclaim your time. <br>Nexa saves you 45+ hrs /month.</h1><img src="https://i2.wp.com/cdn.dribbble.com/users/862175/screenshots/6414127/dribbble.gif" class="planning_img" alt="Planning">' },
       
       { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hackers</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
-      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This is not a "workout" app. <br>We are a longevity companion. <br><br>"Staying healthy feels easy with Nexa. It keeps me motivated and organized"<img src="https://t3.ftcdn.net/jpg/05/38/35/30/360_F_538353038_dlZfmhg4M2xTzN1v2ouBKx711LsAhfyT.jpg" class="planning_img" alt="Planning">' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This is not a "workout" app. <br>We are a longevity companion. <br><br>"Staying healthy feels easy with Nexa. It keeps me motivated and organized!"<img src="https://t3.ftcdn.net/jpg/05/38/35/30/360_F_538353038_dlZfmhg4M2xTzN1v2ouBKx711LsAhfyT.jpg" class="planning_img" alt="Planning">' },
       { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be proactive.</h1>' }
     ],
     currentPane: 0,
