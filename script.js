@@ -15,7 +15,7 @@ new Vue({
       { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">Reclaim your time. <br>Nexa saves you 45+ hrs /month.</h1><img src="https://i2.wp.com/cdn.dribbble.com/users/862175/screenshots/6414127/dribbble.gif" class="planning_img" alt="Planning">' },
       
       { color: '#F6F1E5', content: '<h1>Who is this for?</h1><p><strong>Busy Parents</strong> <br>Streamlined routines.</p><p><strong>Productivity Hackers</strong> <br>Personalized insights.</p><p><strong>Longevity Seekers</strong> <br>Holistic guide.</p>' },
-      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This is not a "workout" app. <br>Nexa is a longevity companion. <br><br>"Staying healthy feels easy with Nexa. The recommendations evolve with me"<img src="https://t3.ftcdn.net/jpg/05/38/35/30/360_F_538353038_dlZfmhg4M2xTzN1v2ouBKx711LsAhfyT.jpg" class="planning_img" alt="Planning">' },
+      { color: '#FFFFFF', content: '<h1 id="planning_pane" class="lefties">This is not a "workout" app. <br>Nexa is a longevity companion. <br><br>"Staying healthy feels easy with Nexa. It keeps me motivated and organized"<img src="https://t3.ftcdn.net/jpg/05/38/35/30/360_F_538353038_dlZfmhg4M2xTzN1v2ouBKx711LsAhfyT.jpg" class="planning_img" alt="Planning">' },
       { color: '#FFFFFF', content: '<h1 id="be-bold-text"><strong>Be bold.</strong> <br>Be precise.<br>Be proactive.</h1>' }
     ],
     currentPane: 0,
