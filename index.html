@@ -14,7 +14,7 @@
   <div id="app">
     <div class="nav">
       <img src="https://raw.githubusercontent.com/shrekondvd2/homepage/main/images/nexa%20logo.png" alt="Logo" class="logo">
-      <button class="try-button" @click="redirectToLink">Try it free</button>
+      <button class="try-button" @click="redirectToLink">Early Access</button>
     </div>
     <div class="pane" v-for="(pane, index) in panes" :key="index" :id="'pane' + index" :style="{ backgroundColor: pane.color }">
       <div class="content" v-html="pane.content"></div>
