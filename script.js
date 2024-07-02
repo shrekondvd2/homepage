@@ -24,7 +24,8 @@ new Vue({
   },
   methods: {
     redirectToLink() {
-      window.location.href = 'https://testflight.apple.com/join/i7Ie7qGd';
+      // window.location.href = 'https://testflight.apple.com/join/i7Ie7qGd';
+      window.location.href = 'https://buy.stripe.com/test_28o5lU56odRj46Y5kk';
     },
     scrollToPane(index) {
       this.isScrolling = true;
